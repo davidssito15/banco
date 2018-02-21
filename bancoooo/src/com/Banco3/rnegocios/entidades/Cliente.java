@@ -1,25 +1,23 @@
 package com.Banco3.rnegocios.entidades;
 
-/**
- *
- * @author usuario
- */
 public class Cliente {
     private String cedula;
     private String nombre;
     private String apellido;
     private String celular;
     private String email;
+    private Cliente cliente;
 
     public Cliente() {
     }
 
-    public Cliente(String cedula, String nombre, String apellido, String celular, String email) {
+    public Cliente(String cedula, String nombre, String apellido, String celular, String email, Cliente cliente) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
         this.email = email;
+        this.cliente = cliente;
     }
 
     public String getCedula() {
@@ -61,6 +59,12 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-        
-    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
