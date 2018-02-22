@@ -51,6 +51,14 @@ public class frmMenuPrincipal extends JFrame{
     JMenuItem mniEliminaPago;
     JMenuItem mniBuscaPago;
     JMenuItem mniListaPago;
+    
+     //EMPLEADO
+    JMenu mnEmpleado;
+    JMenuItem mniNuevoEmpleado;
+    JMenuItem mniModificaEmpleado;
+    JMenuItem mniEliminaEmpleado;
+    JMenuItem mniBuscaEmpleado;
+    JMenuItem mniListaEmpleado;
 //    
 //    JMenu mnMateria;
 //    JMenuItem mniNuevoMateria;
@@ -117,7 +125,7 @@ public class frmMenuPrincipal extends JFrame{
         mnCliente.add(mniBuscaCliente);
         mnCliente.add(mniListaCliente);
         
-        //Sucursal
+          //Sucursal
         mnSucursal= new JMenu("Sucursal");
         mniNuevoSucursal= new JMenuItem("Nuevo");
         mniNuevoSucursal.addActionListener(new ActionListener() {
@@ -130,7 +138,7 @@ public class frmMenuPrincipal extends JFrame{
         mniEliminaSucursal = new JMenuItem("Elimina");
         mniBuscaSucursal = new JMenuItem("Busca");
         mniListaSucursal = new JMenuItem("Lista"); 
-         mniListaSucursal.addActionListener(new ActionListener() {
+        mniListaSucursal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mniListaSucursalActionPerformed(e);
@@ -143,7 +151,33 @@ public class frmMenuPrincipal extends JFrame{
         mnSucursal.add(mniBuscaSucursal);
         mnSucursal.add(mniListaSucursal);
         
+        ///EMPLEADO
+        mnEmpleado= new JMenu("Empleado");
+        mniNuevoEmpleado= new JMenuItem("Nuevo");
+        mniNuevoEmpleado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniNuevoEmpleadoActionPerformed(e);
+                 
+            }
+        });
         
+        mniModificaEmpleado = new JMenuItem("Modifica");
+        mniEliminaEmpleado = new JMenuItem("Elimina");
+        mniBuscaEmpleado = new JMenuItem("Busca");
+        mniListaEmpleado = new JMenuItem("Lista"); 
+        mniListaEmpleado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaEmpleadoActionPerformed(e);
+            }
+        });
+        mnEmpleado.add(mniNuevoEmpleado);
+        mnEmpleado.add(mniModificaEmpleado);
+        mnEmpleado.add(mniEliminaEmpleado);
+        mnEmpleado.addSeparator();
+        mnEmpleado.add(mniBuscaEmpleado);
+        mnEmpleado.add(mniListaEmpleado);
         //Prestamo
         mnSucursal= new JMenu("Prestamo");
         mniNuevoPrestamo= new JMenuItem("Nuevo");
@@ -199,7 +233,8 @@ public class frmMenuPrincipal extends JFrame{
         
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
-         mnbPrincipal.add(mnSucursal);
+        mnbPrincipal.add(mnSucursal);
+        mnbPrincipal.add(mnEmpleado);
         mnInicio.add(mniLogin);
         mnInicio.add(mniSalir);
         
@@ -239,6 +274,19 @@ public class frmMenuPrincipal extends JFrame{
       
     public void mniNuevoSucursalActionPerformed(ActionEvent e){
         frmNuevoSucursal frm = new frmNuevoSucursal();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    
+        public void mniListaEmpleadoActionPerformed(ActionEvent e){
+        frmListaEmpleado frm = new frmListaEmpleado();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    
+      
+    public void mniNuevoEmpleadoActionPerformed(ActionEvent e){
+        frmNuevoEmpleado frm = new frmNuevoEmpleado();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
