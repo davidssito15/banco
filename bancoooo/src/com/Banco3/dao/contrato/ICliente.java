@@ -6,16 +6,16 @@
 package com.Banco3.dao.contrato;
 
 import com.Banco3.rnegocios.entidades.Cliente;
-import java.util.List;
+import java.util.*;
 
 /**
  *
- * @author usuario
+ * @Davidssito Campos
  */
 public interface ICliente {
-    int insertar(Cliente cleinte);    
-    int modificar(Cliente cliente);    
-    int eliminar(Cliente cliente);    
-    Cliente obtener(String cedula) throws Exception;    
-    List<Cliente> obtener() throws Exception;
+    public int insertar(Cliente cliente) throws Exception;
+    public int modificar(Cliente cliente) throws Exception;
+    public int eliminar(Cliente cliente) throws Exception;
+    public Cliente obtener(int cliente) throws Exception;
+    public List<Cliente> obtener() throws Exception; 
 }
