@@ -7,9 +7,9 @@ package com.Banco3.dao.impl;
 
 import com.Banco3.accesoadatos.Conexion;
 import com.Banco3.accesoadatos.Parametro;
-import com.Banco3.dao.contrato.ICliente;
-import com.Banco3.rnegocios.entidades.Cliente;
-import com.Banco3.rnegocios.entidades.Sucursal;
+import com.Banco3.dao.contrato.*;
+import com.Banco3.rnegocios.entidades.*;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,21 +21,19 @@ import java.util.List;
 public class ClienteImpl implements ICliente{
 
     @Override
-    public int insertar(Cliente cliente) {
-         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO cliente(" +
-        "            cedula, nombre, apellido, celular, email)" +
-        "    VALUES (?, ?, ?, ?, ?);";
+    public int insertar(Cliente cliente) throws Exception {
+        int numFilasAfectadas = 0;
+        String sql = "insert into Cliente  values (?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente.getCedula()));
         lstPar.add(new Parametro(2, cliente.getNombre()));
         lstPar.add(new Parametro(3, cliente.getApellido()));
         lstPar.add(new Parametro(4, cliente.getTelefono()));
         lstPar.add(new Parametro(5, cliente.getEmail()));
-        
-        Conexion con = new Conexion();
-        con.conectar();
+        Conexion con = null;
         try {
+            con = new Conexion();
+            con.conectar();
             numFilasAfectadas = con.ejecutaComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
@@ -46,21 +44,22 @@ public class ClienteImpl implements ICliente{
     }
 
     @Override
-    public int modificar(Cliente cliente) {
+    public int modificar(Cliente cliente) throws Exception {
          int numFilasAfectadas = 0;
-        String sql = "UPDATE cliente" +
-        "   SET nombre=?, apellido=?, celular=?, email=?" +
-        " WHERE cedula=?";
-        Conexion con = new Conexion();
+        String sql = "UPDATE Cliente SET Cedula=?, Nombre=?, Apellido=?, Telefono=?, Email=? WHERE Cedula=?";
+      
         List<Parametro> lstPar = new ArrayList<>();
-         lstPar.add(new Parametro(1, cliente.getNombre()));
-        lstPar.add(new Parametro(2, cliente.getApellido()));
-        lstPar.add(new Parametro(3, cliente.getTelefono()));
-        lstPar.add(new Parametro(4, cliente.getEmail()));        
-        lstPar.add(new Parametro(5, cliente.getCedula()));
-        con.conectar();
+        lstPar.add(new Parametro(1, cliente.getCedula()));
+        lstPar.add(new Parametro(2, cliente.getNombre()));
+        lstPar.add(new Parametro(3, cliente.getApellido()));
+        lstPar.add(new Parametro(4, cliente.getTelefono()));
+        lstPar.add(new Parametro(5, cliente.getEmail()));        
+        lstPar.add(new Parametro(6, cliente.getCedula()));
+        Conexion con = null;
         try {
-            numFilasAfectadas = con.ejecutaComando(sql,lstPar);
+            con = new Conexion();
+            con.conectar();
+            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -70,15 +69,17 @@ public class ClienteImpl implements ICliente{
     }
 
     @Override
-    public int eliminar(Cliente cliente) {
+    public int eliminar(Cliente cliente) throws Exception {
+        
         int numFilasAfectadas = 0;
-        String sql = "DELETE FROM cliente WHERE cedula=?";
+        String sql = "delete  from Cliente  where Cedula=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, cliente.getCedula()));
-        Conexion con = new Conexion();
-        con.conectar();
+        lstPar.add(new Parametro(1, cliente.getCedula()));        
+        Conexion con = null;
         try {
-            numFilasAfectadas = con.ejecutaComando(sql,lstPar);
+            con = new Conexion();
+            con.conectar();
+            numFilasAfectadas = con.ejecutaComando(sql, lstPar);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -89,18 +90,17 @@ public class ClienteImpl implements ICliente{
 
     @Override
     public Cliente obtener(String cedula) throws Exception {
-        
         Cliente cliente = null;
-        String sql = "SELECT cedula, nombre, apellido, celular, email" +
-                     "  FROM cliente where cedula=?";
-        Conexion con = new Conexion();
-        
-        List<Parametro> lstPar=new ArrayList<>();
+        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, Email" +
+                     "  FROM Cliente where Cedula=?";
+        List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cedula));
-        con.conectar();
+        Conexion con = null;
         try {
-            ResultSet rst = con.ejecutarQuery(sql,lstPar);
-            while (rst.next()) {
+            con = new Conexion();
+            con.conectar();
+            ResultSet rst = con.ejecutarQuery(sql,null);           
+            while(rst.next()){
                 cliente=new Cliente();
                 cliente.setCedula(rst.getString(1));
                 cliente.setNombre(rst.getString(2));               
@@ -117,17 +117,22 @@ public class ClienteImpl implements ICliente{
     }
 
     @Override
-    public List<Cliente> obtener() throws Exception {
-        List<Cliente> lista = new ArrayList<>();
+    public ArrayList<Cliente> obtener() throws Exception {
+        ArrayList<Cliente> lista = new ArrayList<>();
         
-        String sql = "SELECT cedula, nombre, apellido, celular, email" +
-                     "  FROM cliente";
-        Conexion con = new Conexion();
+        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, email" +
+                     "  FROM Cliente";
+        Conexion con = null;
+       
         con.conectar();
         try {
-            ResultSet rst = con.ejecutarQuery(sql);
+            con = new Conexion();
+            con.conectar();
+            ResultSet rst = con.ejecutaQuery(sql);
+            Cliente cliente= null;
+            
             while (rst.next()) {
-                Cliente cliente = new Cliente();
+                cliente = new Cliente();
                 cliente.setCedula(rst.getString(1));
                 cliente.setNombre(rst.getString(2));               
                 cliente.setApellido(rst.getString(3));
@@ -141,6 +146,5 @@ public class ClienteImpl implements ICliente{
             con.desconectar();
         }
         return lista;
-    }
-    
+    } 
 }
