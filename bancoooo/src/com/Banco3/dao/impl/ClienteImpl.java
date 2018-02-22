@@ -91,15 +91,14 @@ public class ClienteImpl implements ICliente{
     @Override
     public Cliente obtener(String cedula) throws Exception {
         Cliente cliente = null;
-        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, Email" +
-                     "  FROM Cliente where Cedula=?";
-        List<Parametro> lstPar = new ArrayList<>();
+        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, Email FROM Cliente where Cedula=?";
+        ArrayList<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cedula));
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutarQuery(sql,null);           
+            ResultSet rst = con.ejecutarQuery(sql,lstPar);           
             while(rst.next()){
                 cliente=new Cliente();
                 cliente.setCedula(rst.getString(1));
@@ -140,7 +139,9 @@ public class ClienteImpl implements ICliente{
         } catch (Exception e) {
             throw e;
         } finally {
+            if(con!=null){
             con.desconectar();
+            }
         }
         return lista;
     } 

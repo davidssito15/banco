@@ -10,6 +10,7 @@ public class Conexion {
     final String USUARIO = "banco";
     final String CLAVE = "123";
 
+    
     public void conectar() {
         try {
             Class.forName(DRIVER);

@@ -20,8 +20,8 @@ public class frmListaCliente extends JInternalFrame{
         this.setSize(800, 600);
         setTitle("CLIENTE....");
         this.setLayout(new BorderLayout());
-        this.setClosable(true);
-        lblTitulo=new JLabel("Listado de Cliente.");
+        //this.setClosable(true);
+        lblTitulo=new JLabel("Listado de Clientes.");
         tabla=new JTable();
         jacTabla=new JScrollPane(tabla);
         this.add(lblTitulo,BorderLayout.NORTH);
@@ -35,7 +35,6 @@ public class frmListaCliente extends JInternalFrame{
            modelo.addColumn("Nombre");
            modelo.addColumn("Apellido");
            modelo.addColumn("Telefono");
-           modelo.addColumn("Email");
            
           
            List<Cliente> lista=new ArrayList<>();
@@ -48,9 +47,10 @@ public class frmListaCliente extends JInternalFrame{
     }
             
            for(Cliente est:lista){
-              modelo.addRow(new Object[]{est.getCedula(),est.getNombre(),est.getApellido(),est.getTelefono(),est.getEmail()});
+              modelo.addRow(new Object[]{est.getCedula(),est.getNombre(),est.getApellido(),est.getTelefono()});
       
     }
            tabla.setModel(modelo);
     }
+    
 }
