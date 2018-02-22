@@ -30,7 +30,7 @@ public class ClienteImpl implements ICliente{
         lstPar.add(new Parametro(1, cliente.getCedula()));
         lstPar.add(new Parametro(2, cliente.getNombre()));
         lstPar.add(new Parametro(3, cliente.getApellido()));
-        lstPar.add(new Parametro(4, cliente.getCelular()));
+        lstPar.add(new Parametro(4, cliente.getTelefono()));
         lstPar.add(new Parametro(5, cliente.getEmail()));
         
         Conexion con = new Conexion();
@@ -55,7 +55,7 @@ public class ClienteImpl implements ICliente{
         List<Parametro> lstPar = new ArrayList<>();
          lstPar.add(new Parametro(1, cliente.getNombre()));
         lstPar.add(new Parametro(2, cliente.getApellido()));
-        lstPar.add(new Parametro(3, cliente.getCelular()));
+        lstPar.add(new Parametro(3, cliente.getTelefono()));
         lstPar.add(new Parametro(4, cliente.getEmail()));        
         lstPar.add(new Parametro(5, cliente.getCedula()));
         con.conectar();
@@ -105,7 +105,7 @@ public class ClienteImpl implements ICliente{
                 cliente.setCedula(rst.getString(1));
                 cliente.setNombre(rst.getString(2));               
                 cliente.setApellido(rst.getString(3));
-                cliente.setCelular(rst.getString(4));
+                cliente.setTelefono(rst.getString(4));
                 cliente.setEmail(rst.getString(5));
             }
         } catch (Exception e) {
@@ -131,7 +131,7 @@ public class ClienteImpl implements ICliente{
                 cliente.setCedula(rst.getString(1));
                 cliente.setNombre(rst.getString(2));               
                 cliente.setApellido(rst.getString(3));
-                cliente.setCelular(rst.getString(4));
+                cliente.setTelefono(rst.getString(4));
                 cliente.setEmail(rst.getString(5));
                 lista.add(cliente);
             }
