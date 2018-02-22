@@ -109,6 +109,8 @@ public class frmNuevoEmpleado extends JInternalFrame{
             }
         });
         
+         
+         
         pnlPie.add(btnLimpiar);
         pnlPie.add(btnAceptar);
         
