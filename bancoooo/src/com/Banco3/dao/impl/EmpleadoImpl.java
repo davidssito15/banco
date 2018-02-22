@@ -9,7 +9,6 @@ import com.Banco3.accesoadatos.Conexion;
 import com.Banco3.accesoadatos.Parametro;
 import com.Banco3.dao.contrato.IEmpleado;
 import com.Banco3.dao.contrato.ISucursal;
-import com.Banco3.rnegocios.entidades.Cliente;
 import com.Banco3.rnegocios.entidades.Empleado;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,17 +24,16 @@ public class EmpleadoImpl implements IEmpleado {
     public int insertar(Empleado empleado) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "INSERT INTO empleado(\n"
-                + "            id, nombre, apellido, cedula, direccion, telefono, id_jefe, id_sucursal)\n"
-                + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                + "            idempleado, nombre, apellido, direccion, telefono, email, id)\n"
+                + "    VALUES (?, ?, ?, ?, ?, ?, ?);";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, empleado.getId()));
+        lstPar.add(new Parametro(1, empleado.getIdEmpleado()));
         lstPar.add(new Parametro(2, empleado.getNombre()));
         lstPar.add(new Parametro(3, empleado.getApellido()));
-        lstPar.add(new Parametro(4, empleado.getCedula()));
-        lstPar.add(new Parametro(5, empleado.getDireccion()));
-        lstPar.add(new Parametro(6, empleado.getTelefono()));
-        lstPar.add(new Parametro(7, empleado.getEmpleado().getId()));
-        lstPar.add(new Parametro(8, empleado.getSucursal().getId()));
+        lstPar.add(new Parametro(4, empleado.getDireccion()));
+        lstPar.add(new Parametro(5, empleado.getTelefono()));
+         lstPar.add(new Parametro(6,empleado.getEmail()));
+        lstPar.add(new Parametro(7, empleado.getSucursal().getId()));
 
         Conexion con = new Conexion();
         con.conectar();
@@ -53,19 +51,18 @@ public class EmpleadoImpl implements IEmpleado {
     public int modificar(Empleado empleado) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE empleado\n"
-                + "   SET nombre=?, apellido=?, cedula=?, direccion=?, telefono=?, \n"
-                + "       id_jefe=?, id_sucursal=?\n"
-                + " WHERE id=?";
+                + "   SET nombre=?, apellido=?, direccion=?, telefono=?, \n"
+                + "       email=?, id=?\n"
+                + " WHERE idempleado=?";
         Conexion con = new Conexion();
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, empleado.getNombre()));
-        lstPar.add(new Parametro(2, empleado.getApellido()));
-        lstPar.add(new Parametro(3, empleado.getCedula()));
+        lstPar.add(new Parametro(1, empleado.getIdEmpleado()));
+        lstPar.add(new Parametro(2, empleado.getNombre()));
+        lstPar.add(new Parametro(3, empleado.getApellido()));
         lstPar.add(new Parametro(4, empleado.getDireccion()));
         lstPar.add(new Parametro(5, empleado.getTelefono()));
-        lstPar.add(new Parametro(6, empleado.getEmpleado().getId()));
+         lstPar.add(new Parametro(6,empleado.getEmail()));
         lstPar.add(new Parametro(7, empleado.getSucursal().getId()));
-        lstPar.add(new Parametro(8, empleado.getId()));
         con.conectar();
         try {
             numFilasAfectadas = con.ejecutaComando(sql,lstPar);
@@ -84,7 +81,7 @@ public class EmpleadoImpl implements IEmpleado {
                 + " WHERE id=?;";
         Conexion con = new Conexion();
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, empleado.getId()));
+        lstPar.add(new Parametro(1, empleado.getIdEmpleado()));
         con.conectar();
         try {
             numFilasAfectadas = con.ejecutaComando(sql,lstPar);
@@ -99,8 +96,8 @@ public class EmpleadoImpl implements IEmpleado {
     @Override
     public Empleado obtener(int id) throws Exception {
         Empleado empleado = null;
-        String sql = "SELECT id, nombre, apellido, cedula, direccion, telefono, id_jefe, id_sucursal\n"
-                + "  FROM empleado where id=?";
+        String sql = "SELECT idempleado, nombre, apellido, direccion, telefono, email, id\n"
+                + "  FROM empleado where idempleado=?";
         Conexion con = new Conexion();
 
         List<Parametro> lstPar = new ArrayList<>();
@@ -112,14 +109,14 @@ public class EmpleadoImpl implements IEmpleado {
                 IEmpleado ob = new EmpleadoImpl();
                 ISucursal su = new SucursalImpl();
                 empleado = new Empleado();
-                empleado.setId(rst.getInt(1));
+                empleado.setIdEmpleado(rst.getInt(1));
                 empleado.setNombre(rst.getString(2));
                 empleado.setApellido(rst.getString(3));
                 empleado.setCedula(rst.getString(4));
                 empleado.setDireccion(rst.getString(5));
                 empleado.setTelefono(rst.getString(6));
-                empleado.setEmpleado(ob.obtener(rst.getInt(7)));
-                empleado.setSucursal(su.obtener(rst.getInt(8)));
+           
+                empleado.setSucursal(su.obtener(rst.getInt(7)));
             }
         } catch (Exception e) {
             throw e;
@@ -132,7 +129,7 @@ public class EmpleadoImpl implements IEmpleado {
     @Override
     public List<Empleado> obtener() throws Exception {
         List<Empleado> lista = new ArrayList<>();
-        String sql = "SELECT id, nombre, apellido, cedula, direccion, telefono, id_jefe, id_sucursal\n"
+        String sql = "SELECT idempleado, nombre, apellido,  direccion, telefono, email, id\n"
                 + "  FROM empleado";
         Conexion con = new Conexion();
         con.conectar();
@@ -143,14 +140,13 @@ public class EmpleadoImpl implements IEmpleado {
                 IEmpleado ob = new EmpleadoImpl();
                 ISucursal su = new SucursalImpl();
                 empleado = new Empleado();
-                empleado.setId(rst.getInt(1));
+                empleado.setIdEmpleado(rst.getInt(1));
                 empleado.setNombre(rst.getString(2));
                 empleado.setApellido(rst.getString(3));
                 empleado.setCedula(rst.getString(4));
                 empleado.setDireccion(rst.getString(5));
                 empleado.setTelefono(rst.getString(6));
-                empleado.setEmpleado(ob.obtener(rst.getInt(7)));
-                empleado.setSucursal(su.obtener(rst.getInt(8)));
+                empleado.setSucursal(su.obtener(rst.getInt(7)));
                 lista.add(empleado);
             }
         } catch (Exception e) {

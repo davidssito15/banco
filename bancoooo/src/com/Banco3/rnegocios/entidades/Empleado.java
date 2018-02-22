@@ -11,35 +11,35 @@ package com.Banco3.rnegocios.entidades;
  */
 public class Empleado {
 
-    private int id;
+    private int idEmpleado;
     private String nombre;
     private String apellido;
     private String cedula;
     private String direccion;
     private String telefono;
-    private Empleado empleado;
+    private String email;
     private Sucursal sucursal;
 
     public Empleado() {
     }
 
-    public Empleado(int id, String nombre, String apellido, String cedula, String direccion, String telefono, Empleado empleado, Sucursal sucursal) {
-        this.id = id;
+    public Empleado(int idEmpleado, String nombre, String apellido, String cedula, String direccion, String telefono, String email, Sucursal sucursal) {
+        this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.empleado = empleado;
+        this.email = email;
         this.sucursal = sucursal;
     }
 
-    public int getId() {
-        return id;
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public String getNombre() {
@@ -82,12 +82,12 @@ public class Empleado {
         this.telefono = telefono;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Sucursal getSucursal() {
@@ -97,6 +97,6 @@ public class Empleado {
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
-    
 
+   
 }

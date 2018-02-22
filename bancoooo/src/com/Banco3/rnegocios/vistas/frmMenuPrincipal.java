@@ -26,7 +26,15 @@ public class frmMenuPrincipal extends JFrame{
     JMenuItem mniEliminaCliente;
     JMenuItem mniBuscaCliente;
     JMenuItem mniListaCliente;
-        
+      
+    
+    ///SUCURSAL
+    JMenu mnSucursal;
+    JMenuItem mniNuevoSucursal;
+    JMenuItem mniModificaSucursal;
+    JMenuItem mniEliminaSucursal;
+    JMenuItem mniBuscaSucursal;
+    JMenuItem mniListaSucursal;
 
         
 //    JMenu mnCurso;
@@ -52,9 +60,6 @@ public class frmMenuPrincipal extends JFrame{
 //    JMenuItem mniListaDocente;
     
     JDesktopPane dkpEscritorio;
-    
-    
-
     public frmMenuPrincipal() {
         dkpEscritorio= new JDesktopPane();
         dkpEscritorio.setBackground(new Color(240, 240, 240));
@@ -99,10 +104,41 @@ public class frmMenuPrincipal extends JFrame{
         mnCliente.add(mniBuscaCliente);
         mnCliente.add(mniListaCliente);
         
+        //Sucursal
+        mnSucursal= new JMenu("Sucursal");
+        mniNuevoSucursal= new JMenuItem("Nuevo");
+        mniNuevoSucursal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniNuevoSucursalActionPerformed(e);
+            }
+        });
+        mniModificaSucursal = new JMenuItem("Modifica");
+        mniEliminaSucursal = new JMenuItem("Elimina");
+        mniBuscaSucursal = new JMenuItem("Busca");
+        mniListaSucursal = new JMenuItem("Lista"); 
+         mniListaSucursal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaSucursalActionPerformed(e);
+            }
+        });
+        mnSucursal.add(mniNuevoSucursal);
+        mnSucursal.add(mniModificaSucursal);
+        mnSucursal.add(mniEliminaSucursal);
+        mnSucursal.addSeparator();
+        mnSucursal.add(mniBuscaSucursal);
+        mnSucursal.add(mniListaSucursal);
+        
+        
+        
+        
+        
         
         
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
+         mnbPrincipal.add(mnSucursal);
         mnInicio.add(mniLogin);
         mnInicio.add(mniSalir);
         
@@ -126,6 +162,18 @@ public class frmMenuPrincipal extends JFrame{
       
     public void mniNuevoClienteActionPerformed(ActionEvent e){
         frmNuevoCliente frm = new frmNuevoCliente();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+         public void mniListaSucursalActionPerformed(ActionEvent e){
+        frmListaSucursal frm = new frmListaSucursal();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
+    
+      
+    public void mniNuevoSucursalActionPerformed(ActionEvent e){
+        frmNuevoSucursal frm = new frmNuevoSucursal();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
