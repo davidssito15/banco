@@ -6,8 +6,8 @@ public class Conexion {
 
     private Connection con;
     final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    final String URL = "jdbc:sqlserver://192.168.100.24:1433;databaseName=bancoss";
-    final String USUARIO = "bancoss";
+    final String URL = "jdbc:sqlserver://172.30.3.88:1433;databaseName=banco";
+    final String USUARIO = "banco";
     final String CLAVE = "123";
 
     public void conectar() {
