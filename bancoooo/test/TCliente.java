@@ -46,7 +46,7 @@ public class TCliente {
         //Modificar
         clienteelim.setNombre("SD");
         clienteelim.setApellido("SD");
-        clienteelim.setCelular("SD");
+        clienteelim.setTelefono("SD");
         clienteelim.setEmail("SD");
         int modificado=0;
         try {
