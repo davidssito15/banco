@@ -95,6 +95,12 @@ public class frmMenuPrincipal extends JFrame{
         mniModificaCliente= new JMenuItem("Modifica");
         mniEliminaCliente= new JMenuItem("Elimina");
         mniBuscaCliente= new JMenuItem("Busca");
+        mniBuscaCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniBuscaClienteActionPerformed(e);
+            }
+        });
         mniListaCliente= new JMenuItem("Lista");
         mniListaCliente.addActionListener(new ActionListener() {
             @Override
@@ -207,7 +213,11 @@ public class frmMenuPrincipal extends JFrame{
         //SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceCharcoalTheme"); // Se aplica el tema Aqui de Substance
     }
     
-    
+     public void mniBuscaClienteActionPerformed(ActionEvent e){
+        frmBuscarCliente frm = new frmBuscarCliente();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
     public void mniListaClienteActionPerformed(ActionEvent e){
         frmListaCliente frm = new frmListaCliente();
         dkpEscritorio.add(frm);
