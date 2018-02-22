@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -48,11 +50,11 @@ public class frmNuevoCliente extends JInternalFrame{
         setTitle("Cliente....");
          
         this.setLayout(new BorderLayout());
-        //this.setClosable(true);
+        this.setClosable(true);
         pnlcentral = new JPanel();
         pnlpie = new JPanel();
 
-        pnlcentral.setLayout(new GridLayout(12, 2, 5, 5));
+        pnlcentral.setLayout(new GridLayout(7, 2, 5, 5));
         pnlpie.setLayout(new GridLayout(1, 2, 5, 5));
   
        
@@ -64,7 +66,7 @@ public class frmNuevoCliente extends JInternalFrame{
         txtnombres = new JTextField(2);
         apellido = new JLabel("  APELLIDOS: ");
         txtapellidos = new JTextField(2);
-        telefono = new JLabel("  NUMERO TELEFONO: ");
+        telefono = new JLabel("  TELEFONO: ");
         txttelefono = new JTextField(2);
         email = new JLabel("  EMAIL: ");
         txtemail= new JTextField(2);
@@ -74,11 +76,10 @@ public class frmNuevoCliente extends JInternalFrame{
 //      
         btnLimpiar = new JButton("LIMPIAR");
         btnAceptar = new JButton("ACEPTAR");
-        pnlcentral.setBackground(Color.BLACK);
+        pnlcentral.setBackground(Color.green);
         this.add(titulo, BorderLayout.NORTH);
         
         pnlcentral.add(titulo);  
-       
         pnlcentral.add(cedula);
         pnlcentral.add(txtcedula);
         pnlcentral.add(nombre); 
@@ -139,30 +140,28 @@ public class frmNuevoCliente extends JInternalFrame{
             
        }
     public void btnAceptarActionListener(ActionEvent e){
-        ICliente docenteDao=new ClienteImpl();
-        Cliente docente =new Cliente();
+   
+        ICliente clienteDao = new ClienteImpl();
+        Cliente cliente = new Cliente();
+     
+        cliente.setCedula(txtcedula.getText());
+        cliente.setNombre(txtnombres.getText());
+        cliente.setApellido(txtapellidos.getText());
+        cliente.setTelefono(txttelefono.getText());
+        cliente.setEmail(txtemail.getText());
         
-        
-        docente.setCedula(txtcedula.getText());
-        docente.setNombre(txtnombres.getText());
-        docente.setApellido(txtapellidos.getText());
-        docente.setTelefono(txttelefono.getText());
-        docente.setEmail(txtemail.getText());
-        
-        try{
-            if(docenteDao.insertar(docente)>0){
-                JOptionPane.showMessageDialog(this,"Guardado Correctamente!!!",
-                "Transaccion", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(this,"Error desconocido",
-                "error", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            if (clienteDao.insertar(cliente) > 0) {
+                JOptionPane.showMessageDialog(this, "Guardado Correctamente!!",
+                        "Transacción", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error desconocido: ",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }catch(Exception ex){
-             JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar!!: " + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
-        } 
-        
-        
-        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction",JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 }
