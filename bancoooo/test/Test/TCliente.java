@@ -28,15 +28,15 @@ public class TCliente {
     public void pruebaCliente() throws Exception{
         ICliente clienteDao = new ClienteImpl();
         //Insercion
-        int filas = 0;
-        Cliente cliente = new Cliente("1", "Alexander","Correa","022627346","k@hotmailcom");      
-        
-        try {
-            filas = clienteDao.insertar(cliente);
-            System.out.println("filas Insertadas:" + filas);
-        } catch (Exception e) {
-        }
-        assertEquals(filas > 0, true);
+//        int filas = 0;
+//        Cliente cliente = new Cliente("1", "Alexander","Correa","022627346","k@hotmailcom");      
+//        
+//        try {
+//            filas = clienteDao.insertar(cliente);
+//            System.out.println("filas Insertadas:" + filas);
+//        } catch (Exception e) {
+//        }
+//        assertEquals(filas > 0, true);
 
 //        
 ////TEST OBTENER POR CODIGO
@@ -47,19 +47,20 @@ public class TCliente {
 //            System.out.println(client.getCedula() + "    " + client.getNombre() + "       " + client.getApellido()+"    " + client.getTelefono() + "      " + client.getEmail() + ""+ "\n\n");
 //        } catch (Exception e) {
 //        }
-//        //assertEquals(usuario != null, true);
-//        
+        //assertEquals(usuario != null, true);
+        
 ////TEST LISTADO
 //
-//        ArrayList<Cliente> clientes = new ArrayList<>();
-//        try {
-//            clientes = clienteDao.obtener();
-//            for (Cliente nCliente : clientes) {
-//                System.out.println(nCliente.getCedula()+"\t\t\t"+ nCliente.getNombre()+"\t\t\t"+ nCliente.getApellido()+"\t\t\t"+nCliente.getTelefono()+"\t\t\t"+nCliente.getEmail()+""+"");
-//            }
-//        } catch (Exception e) {
-//        }
-//        assertTrue(clientes.size() > 0);
+          List<Cliente> clientess = new ArrayList<>();
+        try {
+            clientess = clienteDao.obtener();
+            for (Cliente clientes : clientess) {
+                System.out.println("CEDULA      " + "  NOMBRE "+ "   APELLIDO"+"DIRECCION"+"TELEFONO"+"EMAIL"+"FECHA NACIEMIENTO");
+                System.out.println(clientes.getCedula() + "" + clientes.getNombre() + "" + clientes.getApellido() + "" + clientes.getTelefono() + "" +  "" + clientes.getEmail());
+            }
+        } catch (Exception e) {
+        }
+       //assertTrue(clientess.size() > 0);
     }
 
 }
