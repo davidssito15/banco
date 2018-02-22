@@ -109,7 +109,6 @@ public class Conexion {
         }
     }
 
-    public ResultSet ejecutaQuery(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
 }
