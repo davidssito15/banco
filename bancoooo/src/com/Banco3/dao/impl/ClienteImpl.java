@@ -128,7 +128,7 @@ public class ClienteImpl implements ICliente{
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutaQuery(sql);
+            ResultSet rst = con.ejecutarQuery(sql);
             Cliente cliente= null;
             
             while (rst.next()) {

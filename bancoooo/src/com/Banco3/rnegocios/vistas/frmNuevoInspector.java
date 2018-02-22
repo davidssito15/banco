@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
-public class frmInspector extends JInternalFrame {
+public class frmNuevoInspector extends JInternalFrame {
 
     
     JLabel titulo0;
@@ -43,7 +43,7 @@ public class frmInspector extends JInternalFrame {
     JPanel pnlcentral;
     JPanel pnlpie;
 
-    public frmInspector() {
+    public frmNuevoInspector() {
         this.setSize(800, 400);
         this.setBackground(Color.CYAN);
         this.setLayout(new BorderLayout());
@@ -111,7 +111,7 @@ public class frmInspector extends JInternalFrame {
 
     public static void main(String[] args) {
 
-        frmInspector frmMenu = new frmInspector();
+        frmNuevoInspector frmMenu = new frmNuevoInspector();
         frmMenu.setVisible(true);
 
     }
