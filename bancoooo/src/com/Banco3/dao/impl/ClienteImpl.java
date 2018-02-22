@@ -117,18 +117,15 @@ public class ClienteImpl implements ICliente{
     }
 
     @Override
-    public ArrayList<Cliente> obtener() throws Exception {
-        ArrayList<Cliente> lista = new ArrayList<>();
+    public List<Cliente> obtener() throws Exception {
+        List<Cliente> lista = new ArrayList<>();
         
-        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, email" +
-                     "  FROM Cliente";
+        String sql = "SELECT Cedula, Nombre, Apellido, Telefono, Email  FROM Cliente";
         Conexion con = null;
-       
-        con.conectar();
         try {
             con = new Conexion();
             con.conectar();
-            ResultSet rst = con.ejecutarQuery(sql);
+            ResultSet rst = con.ejecutarQuery(sql,null);
             Cliente cliente= null;
             
             while (rst.next()) {
