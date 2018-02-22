@@ -27,7 +27,7 @@ public class TSucursal {
         //INSERTAR
         
         int codigoprueba=9782;
-        Sucursal sucursal = new Sucursal(codigoprueba, "Cuenca");
+        Sucursal sucursal = new Sucursal(codigoprueba,"CREDIFE", "Cuenca", "Camilo Chillogalo y 1era Constituyente","0987654321","sucursal1@gmail.com");
         ISucursal dao = new SucursalImpl();
         int resultadoInsersion =0;
         

@@ -57,7 +57,7 @@ public class TEmpleado {
             Empleado jefe=new Empleado();
             IEmpleado ob=new EmpleadoImpl();
             jefe=ob.obtener(1);
-            Empleado empleado=new Empleado(100, "Angel", "Sisa", "180492159-8", "Ambato", "0968759242", jefe , sucursal);
+            Empleado empleado=new Empleado(100, "Angel", "Sisa", "180492159-8", "Ambato", "0968759242","angels@gmail.com", sucursal);
             IEmpleado emple=new EmpleadoImpl();
             resultadoInsersion=emple.insertar(empleado);
         } catch (Exception ex) {
@@ -73,13 +73,13 @@ public class TEmpleado {
             jefe = ob.obtener(1);
             Empleado empleado = new Empleado();
             IEmpleado emple = new EmpleadoImpl();
-            empleado.setId(100);
+            empleado.setIdEmpleado(100);
             empleado.setNombre("Isaias");
             empleado.setApellido("Caiza");
             empleado.setCedula("180492150-8");
             empleado.setDireccion("Quito");
             empleado.setTelefono("0968759242");
-            empleado.setEmpleado(jefe);
+            empleado.setEmail("isaias@gmail.com");
             empleado.setSucursal(sucursal);
             resulatdoModificacion = emple.modificar(empleado);
         } catch (Exception ex) {
@@ -116,7 +116,7 @@ public class TEmpleado {
         try{
             Empleado empl=new Empleado();
             IEmpleado eli=new EmpleadoImpl();
-            empl.setId(100);
+            empl.setIdEmpleado(100);
             resultadoEliminar=eli.eliminar(empl);
         }catch(Exception e){
             System.out.println(e.getMessage());
