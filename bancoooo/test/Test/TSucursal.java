@@ -1,21 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package Test;
 
-import com.Banco3.dao.contrato.ICliente;
-import com.Banco3.dao.contrato.IPago;
-import com.Banco3.dao.contrato.IPrestamo;
-import com.Banco3.dao.impl.ClienteImpl;
-import com.Banco3.dao.impl.PagoImpl;
-import com.Banco3.dao.impl.PrestamoImpl;
-import com.Banco3.rnegocios.entidades.Cliente;
-import com.Banco3.rnegocios.entidades.Pago;
-import com.Banco3.rnegocios.entidades.Prestamo;
+import com.Banco3.dao.contrato.ISucursal;
+import com.Banco3.dao.impl.SucursalImpl;
 import com.Banco3.rnegocios.entidades.Sucursal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,36 +16,29 @@ import static org.junit.Assert.*;
  *
  * @author usuario
  */
-public class TPago {
+public class TSucursal {
     
-    public TPago() {
+    public TSucursal() {
     }
     
     @Test
-    public void pruebaPago() throws Exception
+    public void pruebaSucursal()
     {
         //INSERTAR
         
-        int codigoprueba=1055500;
-        
-        Cliente cliente = new Cliente("060440535-3", "Eloy", "Alfaro", "0958995049", "real@gmail.com");      
-               
-        IPrestamo prestamo = new PrestamoImpl();        
-        
-        Pago pago = new Pago(codigoprueba, new Date(), 101, 202, prestamo.obtener(1));               
-        
-        IPago dao = new PagoImpl();
-        
+        int codigoprueba=9782;
+        Sucursal sucursal = new Sucursal(codigoprueba, "Cuenca");
+        ISucursal dao = new SucursalImpl();
         int resultadoInsersion =0;
         
         try {            
-            resultadoInsersion=dao.insertar(pago);            
+            resultadoInsersion=dao.insertar(sucursal);            
         } catch (Exception e) {
         }
         assertTrue(resultadoInsersion>0);
-        
+          
         //OBTENER POR CODIGO
-        Pago obtener=null;
+        Sucursal obtener=null;
         try {
             obtener=dao.obtener(codigoprueba);
         } catch (Exception e) {
@@ -76,7 +57,7 @@ public class TPago {
         
         //OBTENER TODOS
         
-        List<Pago> lista = new ArrayList<>();
+        List<Sucursal> lista = new ArrayList<>();
         
         try {
             lista=dao.obtener();
@@ -92,10 +73,10 @@ public class TPago {
             resultadoEliminar=dao.eliminar(obtener);            
         } catch (Exception e) {
         }
-        assertTrue(resultadoEliminar>0);
-        
-//        
+        assertTrue(resultadoEliminar>0);  
+       
         
         
     }
+    
 }

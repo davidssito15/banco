@@ -1,3 +1,5 @@
+package Test;
+
 
 import com.Banco3.dao.contrato.*;
 import com.Banco3.dao.impl.*;

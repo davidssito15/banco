@@ -1,3 +1,5 @@
+package Test;
+
 import com.Banco3.dao.contrato.IClientePrestamo;
 import com.Banco3.dao.contrato.IInspector;
 import com.Banco3.dao.impl.ClientePrestamoImpl;

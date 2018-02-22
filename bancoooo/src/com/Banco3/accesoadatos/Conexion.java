@@ -5,10 +5,10 @@ import java.util.*;
 public class Conexion {
 
     private Connection con;
-    final String DRIVER = "org.postgresql.Driver";
-    final String URL = "jdbc:postgresql://localhost:5433/banco";
-    final String USUARIO = "postgres";
-    final String CLAVE = "1234";
+    final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    final String URL = "jdbc:sqlserver://192.168.100.24:1433;databaseName=bancoss";
+    final String USUARIO = "bancoss";
+    final String CLAVE = "123";
 
     public void conectar() {
         try {
@@ -107,5 +107,9 @@ public class Conexion {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public ResultSet ejecutaQuery(String sql) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
