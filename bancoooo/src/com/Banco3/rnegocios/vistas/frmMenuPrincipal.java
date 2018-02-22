@@ -157,12 +157,12 @@ public class frmMenuPrincipal extends JFrame{
                 mniListaPrestamoActionPerformed(e);
             }
         });
-        mnPrestamo.add(mniNuevoPrestamo);
-        mnPrestamo.add(mniModificaPrestamo);
-        mnPrestamo.add(mniEliminaPrestamo);
-        mnPrestamo.addSeparator();
-        mnPrestamo.add(mniBuscaPrestamo);
-        mnPrestamo.add(mniListaPrestamo);
+//        mnPrestamo.add(mniNuevoPrestamo);
+//        mnPrestamo.add(mniModificaPrestamo);
+//        mnPrestamo.add(mniEliminaPrestamo);
+//        mnPrestamo.addSeparator();
+//        mnPrestamo.add(mniBuscaPrestamo);
+//        mnPrestamo.add(mniListaPrestamo);
         
         //Pago
         mnPago= new JMenu("Pago");
