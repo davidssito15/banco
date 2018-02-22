@@ -158,5 +158,4 @@ public class frmNuevoEmpleado extends JInternalFrame{
         
     }
     
-    
 }
