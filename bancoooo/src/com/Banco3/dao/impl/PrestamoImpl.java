@@ -129,7 +129,7 @@ public class PrestamoImpl implements IPrestamo {
                 prestamo.setId(rst.getInt(1));
                 prestamo.setImporte(rst.getDouble(2));
                 prestamo.setCliente(dao1.obtener(rst.getString(3)));
-                prestamo.setSucursal(dao.obtener(rst.getInt(3)));
+                prestamo.setSucursal(dao.obtener(rst.getInt(4)));
                 
                
                 
