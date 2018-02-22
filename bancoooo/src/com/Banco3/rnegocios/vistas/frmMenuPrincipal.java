@@ -59,13 +59,13 @@ public class frmMenuPrincipal extends JFrame{
     JMenuItem mniEliminaEmpleado;
     JMenuItem mniBuscaEmpleado;
     JMenuItem mniListaEmpleado;
-//    
-//    JMenu mnMateria;
-//    JMenuItem mniNuevoMateria;
-//    JMenuItem mniModificaMateria;
-//    JMenuItem mniEliminaMateria;
-//    JMenuItem mniBuscaMateria;
-//    JMenuItem mniListaMateria;
+//    CUENTA
+    JMenu mnCuenta;
+    JMenuItem mniNuevoCuenta;
+    JMenuItem mniModificaCuenta;
+    JMenuItem mniEliminaCuenta;
+    JMenuItem mniBuscaCuenta;
+    JMenuItem mniListaCuenta;
 //    
 //    JMenu mnDocente;
 //    JMenuItem mniNuevoDocente;
@@ -229,14 +229,45 @@ public class frmMenuPrincipal extends JFrame{
         mnPago.addSeparator();
         mnPago.add(mniBuscaPago);
         mnPago.add(mniListaPago);
+        //CUENTA
+        mnCuenta= new JMenu("Cuenta");
+        mniNuevoCuenta= new JMenuItem("Nueva Cuenta");
+        mniNuevoCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniNuevoClienteActionPerformed(e);
+            }
+        });
+        mniModificaCuenta= new JMenuItem("Modifica");
+        mniEliminaCuenta= new JMenuItem("Elimina");
+        mniBuscaCuenta= new JMenuItem("Busca");
+        mniListaCuenta= new JMenuItem("Lista");
+        mniListaCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniListaClienteActionPerformed(e);
+            }
+        });
+        
+        
+        mnCuenta.add(mniNuevoCuenta);
+        mnCuenta.add(mniModificaCuenta);
+        mnCuenta.add(mniEliminaCuenta);
+        mnCuenta.addSeparator();
+        mnCuenta.add(mniBuscaCuenta);
+        mnCuenta.add(mniListaCuenta);
+        
+        
         
         
         mnbPrincipal.add(mnInicio);
         mnbPrincipal.add(mnCliente);
         mnbPrincipal.add(mnSucursal);
         mnbPrincipal.add(mnEmpleado);
+        mnbPrincipal.add(mnCuenta);
         mnInicio.add(mniLogin);
         mnInicio.add(mniSalir);
+        
         
         this.setLayout(new BorderLayout());
         this.add(mnbPrincipal, BorderLayout.NORTH);
@@ -311,7 +342,13 @@ public class frmMenuPrincipal extends JFrame{
         frmListaPago frm = new frmListaPago();
         dkpEscritorio.add(frm);
         frm.setVisible(true);
+        
     }
+          public void mniNuevoCuentaActionPerformed(ActionEvent e){
+        frmNuevoCuenta frm = new frmNuevoCuenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+          }
          
     public void mniSalirActionPerformed(ActionEvent e){
         System.exit(0);
