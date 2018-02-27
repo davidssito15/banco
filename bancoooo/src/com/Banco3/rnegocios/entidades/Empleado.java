@@ -11,83 +11,73 @@ package com.Banco3.rnegocios.entidades;
  */
 public class Empleado {
 
-    private int idEmpleado;
-    private String nombre;
-    private String apellido;
-    private String cedula;
-    private String direccion;
-    private String telefono;
-    private String email;
+    private int CodigoE;
+    private String Nombre;
+    private String Apellido;
+    private String Direccion;
+    private String Telefono;
+    private String Email;
     private Sucursal sucursal;
 
     public Empleado() {
     }
 
-    public Empleado(int idEmpleado, String nombre, String apellido, String cedula, String direccion, String telefono, String email, Sucursal sucursal) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cedula = cedula;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.email = email;
+    public Empleado(int CodigoE, String Nombre, String Apellido, String Direccion, String Telefono, String Email, Sucursal sucursal) {
+        this.CodigoE = CodigoE;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.Email = Email;
         this.sucursal = sucursal;
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public int getCodigoE() {
+        return CodigoE;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setCodigoE(int CodigoE) {
+        this.CodigoE = CodigoE;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return Apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setApellido(String Apellido) {
+        this.Apellido = Apellido;
     }
 
     public String getDireccion() {
-        return direccion;
+        return Direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public Sucursal getSucursal() {
@@ -98,5 +88,6 @@ public class Empleado {
         this.sucursal = sucursal;
     }
 
+   
    
 }

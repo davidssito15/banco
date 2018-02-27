@@ -11,71 +11,76 @@ package com.Banco3.rnegocios.entidades;
  */
 public class Sucursal {
     
-    private int id;
-    private String nombreBanco;
-    private String ciudad;
-    private String direcion;
-    private String telefono;
-    private String email;
-
-    public Sucursal() {
+    private int CodigoS;
+    private String NombreBanco;
+    private String Ciudad;
+    private String Direccion;
+    private String Telefono;
+    private String Email;
+ public Sucursal() {
     }
 
-    public Sucursal(int id, String nombreBanco, String ciudad, String direcion, String telefono, String email) {
-        this.id = id;
-        this.nombreBanco = nombreBanco;
-        this.ciudad = ciudad;
-        this.direcion = direcion;
-        this.telefono = telefono;
-        this.email = email;
+
+    public Sucursal(int CodigoS, String NombreBanco, String Ciudad, String Direccion, String Telefono, String Email) {
+        this.CodigoS = CodigoS;
+        this.NombreBanco = NombreBanco;
+        this.Ciudad = Ciudad;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.Email = Email;
     }
 
-    public int getId() {
-        return id;
+    public int getCodigoS() {
+        return CodigoS;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigoS(int CodigoS) {
+        this.CodigoS = CodigoS;
     }
 
     public String getNombreBanco() {
-        return nombreBanco;
+        return NombreBanco;
     }
 
-    public void setNombreBanco(String nombreBanco) {
-        this.nombreBanco = nombreBanco;
+    public void setNombreBanco(String NombreBanco) {
+        this.NombreBanco = NombreBanco;
     }
 
     public String getCiudad() {
-        return ciudad;
+        return Ciudad;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudad(String Ciudad) {
+        this.Ciudad = Ciudad;
     }
 
-    public String getDirecion() {
-        return direcion;
+    public String getDireccion() {
+        return Direccion;
     }
 
-    public void setDirecion(String direcion) {
-        this.direcion = direcion;
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
-    
+
+       
+/*@Override
+    public String toString() {
+        return NombreBanco; 
+    }*/
 }
