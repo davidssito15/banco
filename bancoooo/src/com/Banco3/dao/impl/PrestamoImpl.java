@@ -18,14 +18,14 @@ public class PrestamoImpl implements IPrestamo {
     public int insertar(Prestamo prestamo) {
         int numFilasAfectadas = 0;
         String sql = "INSERT INTO prestamo(\n" +
-"            id, importe, id_cliente, id_sucursal)\n" +
+"            id, importe, id_cliente, CodigoS)\n" +
 "            VALUES (?, ?, ?, ?);";
         
         List<Parametro> lstp = new ArrayList<>();
         lstp.add(new Parametro(1, prestamo.getId()));
         lstp.add(new Parametro(2, prestamo.getImporte()));
         lstp.add(new Parametro(3, prestamo.getCliente().getCedula()));
-        lstp.add(new Parametro(4, prestamo.getSucursal().getId()));
+        lstp.add(new Parametro(4, prestamo.getSucursal().getCodigoS()));
         
         
         Conexion con = new Conexion();
@@ -43,13 +43,13 @@ public class PrestamoImpl implements IPrestamo {
     public int modificar(Prestamo prestamo) {
         int numFilasAfectadas = 0;
         String sql = "UPDATE prestamo\n" +
-        "   SET  importe=?, id_cliente=?, id_sucursal=?\n" +
+        "   SET  importe=?, id_cliente=?, CodigoS=?\n" +
         " WHERE id=?;";
         Conexion con = new Conexion();
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getImporte()));
         lstPar.add(new Parametro(2, prestamo.getCliente().getCedula()));
-        lstPar.add(new Parametro(3, prestamo.getSucursal().getId()));
+        lstPar.add(new Parametro(3, prestamo.getSucursal().getCodigoS()));
         lstPar.add(new Parametro(4, prestamo.getId()));
         con.conectar();
         try {
@@ -86,7 +86,7 @@ public class PrestamoImpl implements IPrestamo {
     @Override
     public Prestamo obtener(int codigo) throws Exception {
         Prestamo pres = null;
-        String sql = "SELECT id, importe, id_cliente, id_sucursal\n" +
+        String sql = "SELECT id, importe, id_cliente, CodigoS\n" +
           "  FROM prestamo where id=?";
         ISucursal dao = new SucursalImpl();
         ICliente dao1 = new ClienteImpl();
@@ -114,7 +114,7 @@ public class PrestamoImpl implements IPrestamo {
     @Override
     public List<Prestamo> obtener() throws Exception {
         List<Prestamo> lista = new ArrayList<>();
-        String sql = "SELECT id, importe, id_cliente, id_sucursal\n" +
+        String sql = "SELECT id, importe, id_cliente, CodigoS\n" +
          "  FROM prestamo;";
         
         ISucursal dao = new SucursalImpl();

@@ -20,10 +20,15 @@ public class SucursalImpl implements ISucursal{
     @Override
     public int insertar(Sucursal sucursal) {
         int numFilasAfectadas = 0;
-        String sql = "insert into sucursal values(?,?)";
+        String sql = "insert into sucursal values(?,?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, sucursal.getId()));
-        lstPar.add(new Parametro(2, sucursal.getCiudad()));
+        lstPar.add(new Parametro(1, sucursal.getCodigoS()));
+        lstPar.add(new Parametro(2, sucursal.getNombreBanco()));
+        lstPar.add(new Parametro(3, sucursal.getCiudad()));
+        lstPar.add(new Parametro(4, sucursal.getDireccion()));
+        lstPar.add(new Parametro(5, sucursal.getTelefono()));
+        lstPar.add(new Parametro(6, sucursal.getEmail()));
+        
         
         Conexion con = new Conexion();
         con.conectar();
@@ -42,8 +47,8 @@ public class SucursalImpl implements ISucursal{
     public int modificar(Sucursal sucursal) {
         
         int numFilasAfectadas = 0;
-        String sql = "update sucursal set ciudad= '"+sucursal.getCiudad()
-                + "' where  id = " + sucursal.getId();
+        String sql = "update sucursal set ciudad= '"+sucursal
+                + "' where  CodigoS = " + sucursal.getCodigoS();
         Conexion con = new Conexion();
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, sucursal.getCiudad()));
@@ -63,7 +68,7 @@ public class SucursalImpl implements ISucursal{
     public int eliminar(Sucursal sucursal) {
         
         int numFilasAfectadas = 0;
-        String sql = "delete from sucursal WHERE id=" + sucursal.getId();
+        String sql = "delete from sucursal WHERE CodigoS=" + sucursal.getCodigoS();
         Conexion con = new Conexion();
         con.conectar();
         try {
@@ -81,7 +86,7 @@ public class SucursalImpl implements ISucursal{
     public Sucursal obtener(int id) throws Exception{
         
         Sucursal sucursal = null;
-        String sql = "select id, ciudad from sucursal where id=?";
+        String sql = "select CodigoS,nombrebanco,ciudad,direccion,telefono,email from sucursal where CodigoS=?";
         Conexion con = new Conexion();
         
         List<Parametro> lstPar=new ArrayList<>();
@@ -91,8 +96,13 @@ public class SucursalImpl implements ISucursal{
             ResultSet rst = con.ejecutarQuery(sql,lstPar);
             while (rst.next()) {
                 sucursal=new Sucursal();
-                sucursal.setId(rst.getInt(1));
-                sucursal.setCiudad(rst.getString(2));               
+                sucursal.setCodigoS(rst.getInt(1));
+                sucursal.setNombreBanco(rst.getString(2));  
+                sucursal.setCiudad(rst.getString(3));  
+                sucursal.setDireccion(rst.getString(4)); 
+                sucursal.setTelefono(rst.getString(5));  
+                sucursal.setEmail(rst.getString(6));  
+                
             }
         } catch (Exception e) {
             throw e;
@@ -109,15 +119,19 @@ public class SucursalImpl implements ISucursal{
         
         List<Sucursal> lista = new ArrayList<>();
         
-        String sql = "select id, ciudad from sucursal";
+        String sql = "select CodigoS, nombrebanco,ciudad,direccion,telefono,email from sucursal";
         Conexion con = new Conexion();
         con.conectar();
         try {
             ResultSet rst = con.ejecutarQuery(sql);
             while (rst.next()) {
                 Sucursal sucursal = new Sucursal();
-                sucursal.setId(rst.getInt(1));
-                sucursal.setCiudad(rst.getString(2));
+                sucursal.setCodigoS(rst.getInt(1));
+                sucursal.setNombreBanco(rst.getString(2));  
+                sucursal.setCiudad(rst.getString(3));  
+                sucursal.setDireccion(rst.getString(4)); 
+                sucursal.setTelefono(rst.getString(5));  
+                sucursal.setEmail(rst.getString(6));  
                 lista.add(sucursal);
             }
         } catch (Exception e) {

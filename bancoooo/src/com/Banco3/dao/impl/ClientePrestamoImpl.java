@@ -30,7 +30,7 @@ public class ClientePrestamoImpl implements IClientePrestamo{
         lstPar.add(new Parametro(1, clienteprestamo.getId()));
         lstPar.add(new Parametro(2, clienteprestamo.getCliente().getCedula()));
         lstPar.add(new Parametro(3, clienteprestamo.getPrestamo().getId()));
-        lstPar.add(new Parametro(4, clienteprestamo.getSucursal().getId()));
+        lstPar.add(new Parametro(4, clienteprestamo.getSucursal().getCodigoS()));
         
         Conexion con = new Conexion();
         con.conectar();
@@ -49,14 +49,14 @@ public class ClientePrestamoImpl implements IClientePrestamo{
   
         int numFilasAfectadas = 0;
         String sql = "UPDATE cliente_prestamo" +
-        "SET id=?, id_cliente=?, id_prestamo=?, id_sucursal=?" +
+        "SET id=?, id_cliente=?, id_prestamo=?, codigos=?" +
         " WHERE cedula=?";
         Conexion con = new Conexion();
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, clienteprestamo.getId()));
         lstPar.add(new Parametro(2, clienteprestamo.getCliente().getCedula()));
         lstPar.add(new Parametro(3, clienteprestamo.getPrestamo().getId()));
-        lstPar.add(new Parametro(4, clienteprestamo.getSucursal().getId()));
+        lstPar.add(new Parametro(4, clienteprestamo.getSucursal().getCodigoS()));
         con.conectar();
         try {
             numFilasAfectadas = con.ejecutaComando(sql);
@@ -88,7 +88,7 @@ public class ClientePrestamoImpl implements IClientePrestamo{
     @Override
     public ClientePrestamo obtener(int id) throws Exception {
          ClientePrestamo clienteprestamo = null;
-        String sql = "SELECT id, id_cliente, id_prestamo, id_sucursal\n" +
+        String sql = "SELECT id, id_cliente, id_prestamo, codigos\n" +
         "FROM cliente_prestamo where id=?";
         Conexion con = new Conexion();
         
@@ -122,7 +122,7 @@ public class ClientePrestamoImpl implements IClientePrestamo{
     public List<ClientePrestamo> obtener() throws Exception {
         List<ClientePrestamo> lista = new ArrayList<>();
         
-        String sql = "SELECT id, id_cliente, id_prestamo, id_sucursal\n" +
+        String sql = "SELECT id, id_cliente, id_prestamo, codigoS\n" +
                       "FROM cliente_prestamo";
         Conexion con = new Conexion();
         con.conectar();
