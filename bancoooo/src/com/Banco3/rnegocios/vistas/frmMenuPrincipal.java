@@ -38,7 +38,7 @@ public class frmMenuPrincipal extends JFrame{
 
 
       ///PRESTAMO  
-
+    JMenu mnNuevoprestamo;
     JMenuItem mniNuevoPrestamo;
     JMenuItem mniModificaPrestamo;
     JMenuItem mniEliminaPrestamo;
@@ -200,8 +200,9 @@ public class frmMenuPrincipal extends JFrame{
         mnEmpleado.addSeparator();
         mnEmpleado.add(mniBuscaEmpleado);
         mnEmpleado.add(mniListaEmpleado);
+        
         //Prestamo
-        mnSucursal= new JMenu("Prestamo");
+        mnNuevoprestamo= new JMenu("Prestamo");
         mniNuevoPrestamo= new JMenuItem("Nuevo");
         mniNuevoPrestamo.addActionListener(new ActionListener() {
             @Override
@@ -336,9 +337,9 @@ public class frmMenuPrincipal extends JFrame{
         mnbPrincipal.add(mnSucursal);
         mnbPrincipal.add(mnEmpleado);
         mnbPrincipal.add(mnCuenta);
-         mnbPrincipal.add(mnSucursal);
-         mnbPrincipal.add(mnInspector);
-         mnbPrincipal.add(mnPedido);
+        mnbPrincipal.add(mnSucursal);
+        mnbPrincipal.add(mnInspector);
+        mnbPrincipal.add(mnPedido);
         mnInicio.add(mniLogin);
         mnInicio.add(mniSalir);
         
@@ -370,11 +371,7 @@ public class frmMenuPrincipal extends JFrame{
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-         public void mniListaSucursalActionPerformed(ActionEvent e){
-        frmListaSucursal frm = new frmListaSucursal();
-        dkpEscritorio.add(frm);
-        frm.setVisible(true);
-    }
+      
      public void mniNuevoInspectorActionPerformed(ActionEvent e){
         frmNuevoInspector frm = new frmNuevoInspector();
         dkpEscritorio.add(frm);
@@ -391,7 +388,11 @@ public class frmMenuPrincipal extends JFrame{
         dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
-    
+       public void mniListaSucursalActionPerformed(ActionEvent e){
+        frmListaSucursal frm = new frmListaSucursal();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
+    }
         public void mniListaEmpleadoActionPerformed(ActionEvent e){
         frmListaEmpleado frm = new frmListaEmpleado();
         dkpEscritorio.add(frm);
