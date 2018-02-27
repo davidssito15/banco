@@ -45,7 +45,7 @@ public class frmListaPrestamo extends JInternalFrame{
             JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
         for (Prestamo pres : lista) {
-            modelo.addRow(new Object[]{pres.getId(), pres.getImporte(), pres.getCliente().getCedula(), pres.getSucursal().getId()});
+            modelo.addRow(new Object[]{pres.getId(), pres.getImporte(), pres.getCliente().getCedula(), pres.getSucursal().getCodigoS()});
         }
         tabla.setModel(modelo);
     }

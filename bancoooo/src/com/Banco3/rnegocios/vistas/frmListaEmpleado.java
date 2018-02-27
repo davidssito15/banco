@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-
 /**
  *
  * @author Francisco
@@ -58,7 +56,7 @@ public class frmListaEmpleado extends JInternalFrame{
              JOptionPane.ERROR_MESSAGE);
         }
         for(Empleado est : lista){
-            modelo.addRow(new Object[] { est.getIdEmpleado(), est.getNombre(), est.getApellido(), est.getDireccion(), est.getTelefono(), est.getEmail(), est.getSucursal()});
+            modelo.addRow(new Object[] { est.getCodigoE(), est.getNombre(), est.getApellido(), est.getDireccion(), est.getTelefono(), est.getEmail(), est.getSucursal()});
             
            tabla.setModel(modelo); 
         }

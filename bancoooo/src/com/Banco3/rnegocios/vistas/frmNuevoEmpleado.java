@@ -76,8 +76,7 @@ public class frmNuevoEmpleado extends JInternalFrame{
         txtapellido = new JTextField(2);
         txtdireccion = new JTextField(2);
         txttelefono = new JTextField(2);
-        txtemail = new JTextField(2);
-        
+        txtemail = new JTextField(2); 
         cargarSucursal();
         cmbSucursal = new JComboBox(lstSucursal.toArray());
         btnLimpiar= new JButton("Limpiar");
@@ -134,7 +133,7 @@ public class frmNuevoEmpleado extends JInternalFrame{
     public void btnAceptarActionListener(ActionEvent e){
         IEmpleado empleadoDao = new EmpleadoImpl();
         Empleado empleado = new Empleado();
-        empleado.setIdEmpleado(Integer.parseInt(txtcodigo.getText()));
+        empleado.setCodigoE(Integer.parseInt(txtcodigo.getText()));
         empleado.setNombre(txtnombre.getText());
         empleado.setApellido(txtapellido.getText());
         empleado.setDireccion(txtdireccion.getText());

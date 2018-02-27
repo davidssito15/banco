@@ -200,7 +200,7 @@ public class frmMenuPrincipal extends JFrame{
         mnEmpleado.addSeparator();
         mnEmpleado.add(mniBuscaEmpleado);
         mnEmpleado.add(mniListaEmpleado);
-        
+       
         //Prestamo
         mnNuevoprestamo= new JMenu("Prestamo");
         mniNuevoPrestamo= new JMenuItem("Nuevo");

@@ -56,7 +56,7 @@ public class frmListaSucursal extends JInternalFrame{
             JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
         for (Sucursal sucursal : lista) {
-            modelo.addRow(new Object[]{sucursal.getId(), sucursal.getNombreBanco().toString(), sucursal.getCiudad(), sucursal.getDirecion(), sucursal.getTelefono(),sucursal.getEmail()});
+            modelo.addRow(new Object[]{sucursal.getCodigoS(), sucursal.getNombreBanco().toString(), sucursal.getCiudad(), sucursal.getDireccion(), sucursal.getTelefono(),sucursal.getEmail()});
         }
         tabla.setModel(modelo);
     }

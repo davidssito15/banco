@@ -111,10 +111,10 @@ public class frmNuevoSucursal extends JInternalFrame{
     public void btnAceptarActionListener(ActionEvent e){
         ISucursal sucursalDao = new SucursalImpl();
         Sucursal sucursal = new Sucursal();
-        sucursal.setId(Integer.parseInt(txtid.getText()));
+        sucursal.setCodigoS(Integer.parseInt(txtid.getText()));
         sucursal.setNombreBanco(txtnombrebanco.getText());
         sucursal.setCiudad(txtciudad.getText());
-        sucursal.setDirecion(txtdireccion.getText());
+        sucursal.setDireccion(txtdireccion.getText());
         sucursal.setTelefono(txttelefono.getText());
         sucursal.setEmail(txtemail.getText());
         
