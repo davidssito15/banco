@@ -47,7 +47,7 @@ public class TSucursal {
         
         //MODIFICAR
         
-        obtener.setId(codigoprueba);
+        obtener.setCodigoS(codigoprueba);
         int resultadoModificacion=0;
         try {
             resultadoModificacion=dao.modificar(obtener);
